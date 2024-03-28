@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\Project;
+use App\http\Controllers\Api\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +19,15 @@ use App\Models\Project;
 //     return $request->user();
 // });
 
-Route::get('/projects', function() {
-    $projects = Project::all();
-    return response()->json($projects);
-});
+
+// importazione rotte singole
+// Route::resource('projects', ProjectController::class);
+// Route::prefix('projects')->controller()
+// Route::get('/projects',[ProjectController::class, 'index']);
+// Route::get('/projects/{project}',[ProjectController::class, 'show']);
+// Route::post('/projects',[ProjectController::class, 'store']);
+// Route::delete('/projects/{project}',[ProjectController::class, 'destroy']);
+// Route::put('/projects/{project}',[ProjectController::class, 'update']);
+
+// Glodale
+Route::apiResource('projects', ProjectController::class)->only('index');
