@@ -30,4 +30,5 @@ use App\http\Controllers\Api\ProjectController;
 // Route::put('/projects/{project}',[ProjectController::class, 'update']);
 
 // Glodale
-Route::apiResource('projects', ProjectController::class)->only('index');
+Route::apiResource('projects', ProjectController::class)->only('index', 'show');
+Route::get('projects/{id}', [ProjectController::class, 'show']);
