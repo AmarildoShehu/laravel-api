@@ -13,7 +13,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::with('type', 'technologies')->get();
         return response()->json($projects);
     }
 
@@ -28,10 +28,10 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */                  
-    public function show(string $id)
+    public function show(string $slug)
     {
         // cerco i post singolarmnte
-         $project = Project::find($id);
+         $project = Project::whereSlug($slug)->first();
 
          //se non trova il post risponde nullo o con il codice 404
         if(!$project) return response(null, 404);

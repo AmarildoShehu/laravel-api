@@ -31,4 +31,4 @@ use App\http\Controllers\Api\ProjectController;
 
 // Glodale
 Route::apiResource('projects', ProjectController::class)->only('index', 'show');
-Route::get('projects/{id}', [ProjectController::class, 'show']);
+Route::get('projects/{slug}', [ProjectController::class, 'show']);
